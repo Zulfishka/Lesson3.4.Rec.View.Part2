@@ -30,7 +30,7 @@ public class DetailActivity extends AppCompatActivity {
         Animal animal = (Animal) getIntent().getSerializableExtra("animal");
         if (animal != null) {
             textOne.setText(animal.getName());
-            textTwo.setText(animal.getAge());
+            textTwo.setText(String.valueOf(animal.getAge()));
             textThird.setText(animal.getColour());
             imageView.setImageResource(animal.getImage());
         }

@@ -8,40 +8,41 @@ import android.os.Bundle;
 import android.os.TokenWatcher;
 import android.widget.Toast;
 
+import com.example.lesson34recviewpart2.databinding.ActivityMainBinding;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AnimalClick {
 
-    RecyclerView recyclerView;
     AnimalAdapter adapter;
-   ArrayList<Animal> arrayList = new ArrayList<>();
+
+    ArrayList<Animal> arrayList = new ArrayList<>();
+
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initViews();
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         fillList();
         initAdapter();
 
     }
 
-    private void initViews() {
-        recyclerView = findViewById(R.id.recyclerView);
-    }
 
     private void fillList () {
 
-        arrayList.add (new Animal("Dog", 3, "braun", R.drawable.img));
-        arrayList.add (new Animal("Cat", 1, "grey", R.drawable.img_1));
-        arrayList.add (new Animal("Hamster", 1, "white", R.drawable.img_2));
-        arrayList.add (new Animal("Parrot", 2, "colorful", R.drawable.img_3));
-        arrayList.add (new Animal("Rabbit", 2, "black", R.drawable.img_4));
+        arrayList.add (new Animal("Dog", 3, "braun", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJOWT1at69fd7l9JCJwIahRlA-5KPGttME1A&usqp=CAU"));
+        arrayList.add (new Animal("Cat", 1, "grey", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxhWWZdaKHmh0OrzD4RLDlVQGbjetkk2LqQw&usqp=CAU"));
+        arrayList.add (new Animal("Hamster", 1, "white","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrrizKGVpBHbam-CB4fhexhtm7Iq938CgRQswQGsIs&s"));
+        arrayList.add (new Animal("Parrot", 2, "colorful", "https://galerey-room.ru/images/114636_1390898796.jpeg"));
+        arrayList.add (new Animal("Rabbit", 2, "black", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm7KqV4UA1zulmN3kZxcxGVd65eoYWkVU8LDQu7eM&s"));
 
     }
     private void initAdapter() {
         adapter = new AnimalAdapter(arrayList, this);
-        recyclerView.setAdapter(adapter);
+        binding.recyclerView.setAdapter(adapter);
     }
 
 

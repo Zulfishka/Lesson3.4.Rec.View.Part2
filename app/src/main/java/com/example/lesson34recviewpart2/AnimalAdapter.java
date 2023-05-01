@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.lesson34recviewpart2.databinding.ItemAnimalBinding;
+
 import java.util.ArrayList;
 import java.util.function.LongToIntFunction;
 
@@ -26,9 +29,8 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
     @Override
     public AnimalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new AnimalViewHolder(
-                LayoutInflater.from(
-                        parent.getContext())
-                        .inflate(R.layout.item_animal,parent,false));
+                ItemAnimalBinding.inflate(
+                LayoutInflater.from(parent.getContext()),parent,false));
     }
 
     @Override
@@ -48,23 +50,18 @@ public class AnimalAdapter extends RecyclerView.Adapter<AnimalAdapter.AnimalView
 
     public static class AnimalViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView;
-        TextView name, age, color;
+       ItemAnimalBinding binding;
 
-        public AnimalViewHolder(View itemView) {
-            super(itemView);
+        public AnimalViewHolder(@NonNull ItemAnimalBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
 
         public void onBind (Animal animal){
-            imageView = itemView.findViewById(R.id.image_view);
-            name = itemView.findViewById(R.id.tv_first);
-            age = itemView.findViewById(R.id.tv_second);
-            color = itemView.findViewById(R.id.tv_third);
-
-            imageView.setImageResource(animal.getImage());
-            name.setText(animal.getName());
-            age.setText(String.valueOf(animal.getAge()));
-            color.setText(animal.getColour());
-            }
+            Glide.with(binding.imageView).load(animal.getImage()).into(binding.imageView);
+            binding.tvFirst.setText(animal.getName());
+            binding.tvSecond.setText(animal.getAge());
+            binding.tvThird.setText(animal.getColour());
         }
+    }
 }

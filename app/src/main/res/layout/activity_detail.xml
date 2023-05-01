@@ -7,33 +7,9 @@
     android:layout_marginTop="20dp"
     tools:context=".DetailActivity">
 
-    <ImageView
-        android:id="@+id/imaged"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_launcher_background"
-        />
-
-    <TextView
-        android:id="@+id/textd"
-        app:layout_constraintTop_toBottomOf="@+id/imaged"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tv_secondd"
-        app:layout_constraintTop_toBottomOf="@+id/textd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/tv_thirdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_secondd"/>
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

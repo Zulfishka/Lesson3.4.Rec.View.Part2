@@ -6,33 +6,30 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.lesson34recviewpart2.databinding.ActivityDetailBinding;
+
 public class DetailActivity extends AppCompatActivity {
 
-    private TextView textOne, textTwo, textThird;
-    private ImageView imageView;
+    ActivityDetailBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-        initUI();
-        getObject();
-    }
+        binding = ActivityDetailBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-    private void initUI() {
-        textOne= findViewById(R.id.textd);
-        textTwo= findViewById(R.id.tv_secondd);
-        textThird= findViewById(R.id.tv_thirdd);
-        imageView=findViewById(R.id.imaged);
-    }
-
-    private void getObject() {
         Animal animal = (Animal) getIntent().getSerializableExtra("animal");
-        if (animal != null) {
-            textOne.setText(animal.getName());
-            textTwo.setText(String.valueOf(animal.getAge()));
-            textThird.setText(animal.getColour());
-            imageView.setImageResource(animal.getImage());
-        }
+
+        NewFragment fragment = new NewFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("animal", animal);
+        fragment.setArguments(bundle);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.fragment_container_view, fragment)
+                .commit();
     }
 }

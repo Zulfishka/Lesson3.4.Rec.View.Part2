@@ -7,9 +7,9 @@ public class Animal implements Serializable {
     String name;
     int age;
     String colour;
-    int image;
+    String image;
 
-    public Animal(String name, int age, String colour, int image) {
+    public Animal(String name, int age, String colour, String image) {
         this.name = name;
         this.age = age;
         this.colour = colour;
@@ -28,7 +28,7 @@ public class Animal implements Serializable {
         return colour;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
@@ -44,7 +44,7 @@ public class Animal implements Serializable {
         this.colour = colour;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }
